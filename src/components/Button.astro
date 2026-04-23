@@ -1,46 +1,36 @@
 ---
 interface Props {
-  text?: string;
-  fill?: string;
-  stroke?: string;
-  strokeWidth?: string | number;
-  textColor?: string;
-  fontSize?: string | number;
-  fontFamily?: string;
-  padding?: string;
-  hoverTextColor?: string;
-  hoverFill?: string;
+  styles?: {
+    color?: string;
+    border?: string;
+    padding?: string;
+    'background-color'?: string;
+    'border-color'?: string;
+    'border-width'?: string | number;
+    'font-size'?: string | number;
+    hover?: {
+      color?: string;
+      'background-color'?: string;
+    };
+  };
   class?: string;
 }
 
-const {
-  text = 'button',
-  fill = '#f56020',
-  stroke = '#1a1a1a',
-  strokeWidth = '1',
-  textColor = '#1a1a1a',
-  fontSize = '1rem',
-  fontFamily = 'Space Mono, monospace',
-  padding = '1rem 4rem',
-  hoverTextColor = '#FAFAFA',
-  hoverFill = '#1a1a1a',
-  class: className,
-  ...props
-} = Astro.props;
+const { styles = {}, class: className, ...props } = Astro.props;
 
-const styleVariables = {
-  '--btn-fill': fill,
-  '--btn-hover-fill': hoverFill,
-  '--btn-stroke': stroke,
-  '--btn-stroke-width': strokeWidth,
-  '--btn-text-color': textColor,
-  '--btn-hover-text-color': hoverTextColor,
-  '--btn-font-size': fontSize,
-  '--btn-padding': padding,
+const variables = {
+  '--button-fill': styles?.['background-color'] || '#ff542d',
+  '--button-hover-fill': styles?.hover?.['background-color'] || '#ff8060',
+  '--button-stroke': styles?.['border-color'] || '#7a2710',
+  '--button-stroke-width': styles?.['border-width'] || '1',
+  '--button-text-color': styles?.color || '#f0f0f0',
+  '--button-hover-text-color': styles?.hover?.color || '#444',
+  '--button-font-size': styles?.['font-size'] || '1rem',
+  '--button-padding': styles?.padding || '0.5rem 1rem',
 };
 ---
 
-<div class=`button ${className}` style={styleVariables} {...props}>
+<div class=`button ${className}` style={variables} {...props}>
   <svg
     viewBox="0 0 340 56"
     preserveAspectRatio="none"
@@ -53,7 +43,7 @@ const styleVariables = {
     ></path>
   </svg>
   <span class="button__text">
-    {text}
+    <slot />
   </span>
 </div>
 
@@ -63,7 +53,7 @@ const styleVariables = {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: var(--btn-padding);
+    padding: var(--button-padding);
     cursor: pointer;
     isolation: isolate;
   }
@@ -79,8 +69,8 @@ const styleVariables = {
   }
 
   .button__text {
-    font-size: var(--btn-font-size);
-    color: var(--btn-text-color);
+    font-size: var(--button-font-size);
+    color: var(--button-text-color);
     letter-spacing: 0.08rem;
     white-space: nowrap;
     text-align: center;
@@ -90,9 +80,9 @@ const styleVariables = {
   }
 
   .button__path {
-    fill: var(--btn-fill);
-    stroke: var(--btn-stroke);
-    stroke-width: var(--btn-stroke-width);
+    fill: var(--button-fill);
+    stroke: var(--button-stroke);
+    stroke-width: var(--button-stroke-width);
     vector-effect: non-scaling-stroke;
     transition:
       fill 0.3s ease,
@@ -100,10 +90,10 @@ const styleVariables = {
   }
 
   .button:hover .button__path {
-    fill: var(--btn-hover-fill);
+    fill: var(--button-hover-fill);
   }
 
   .button:hover .button__text {
-    color: var(--btn-hover-text-color);
+    color: var(--button-hover-text-color);
   }
 </style>
