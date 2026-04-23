@@ -184,9 +184,12 @@
   --gutter-2xl: 3rem; /* 48px — large monitor */
 }
 
+html,
 body {
   font-family: var(--font-spacemono);
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
   box-sizing: border-box;
 }

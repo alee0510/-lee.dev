@@ -40,25 +40,25 @@ const styleVariables = {
 };
 ---
 
-<div class=`btn ${className}` style={styleVariables} {...props}>
+<div class=`button ${className}` style={styleVariables} {...props}>
   <svg
     viewBox="0 0 340 56"
     preserveAspectRatio="none"
-    class="btn__bg"
+    class="button__bg"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      class="btn__path"
+      class="button__path"
       d="M 14,0 L 334,0 Q 340,0 340,6 L 340,39 Q 340,42 337,45 L 329,53 Q 326,56 323,56 L 6,56 Q 0,56 0,50 L 0,17 Q 0,14 3,11 L 11,3 Q 14,0 14,0 Z"
     ></path>
   </svg>
-  <span class="btn__text">
+  <span class="button__text">
     {text}
   </span>
 </div>
 
 <style>
-  .btn {
+  .button {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -68,7 +68,7 @@ const styleVariables = {
     isolation: isolate;
   }
 
-  .btn__bg {
+  .button__bg {
     position: absolute;
     top: 0;
     left: 0;
@@ -78,7 +78,7 @@ const styleVariables = {
     pointer-events: none;
   }
 
-  .btn__text {
+  .button__text {
     font-size: var(--btn-font-size);
     color: var(--btn-text-color);
     letter-spacing: 0.08rem;
@@ -89,7 +89,7 @@ const styleVariables = {
     transition: color 0.3s ease;
   }
 
-  .btn__path {
+  .button__path {
     fill: var(--btn-fill);
     stroke: var(--btn-stroke);
     stroke-width: var(--btn-stroke-width);
@@ -99,11 +99,11 @@ const styleVariables = {
       stroke 0.3s ease;
   }
 
-  .btn:hover .btn__path {
+  .button:hover .button__path {
     fill: var(--btn-hover-fill);
   }
 
-  .btn:hover .btn__text {
+  .button:hover .button__text {
     color: var(--btn-hover-text-color);
   }
 </style>
