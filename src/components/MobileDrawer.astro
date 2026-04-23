@@ -115,7 +115,13 @@ const { links = [] } = Astro.props;
     z-index: 1100;
     width: min(100vw, 420px);
     height: 100dvh;
-    background: var(--neutral-50);
+    background-color: var(--neutral-50);
+    background-image: radial-gradient(
+      circle,
+      var(--tertiary-20) 1px,
+      transparent 1px
+    );
+    background-size: var(--space-xl) var(--space-xl);
     overflow-y: auto;
     overscroll-behavior: contain;
     transform: translateX(-100%);
