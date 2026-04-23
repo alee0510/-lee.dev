@@ -40,7 +40,13 @@ const { links = [] } = Astro.props;
   <!-- close button -->
   <div class="drawer__header">
     <div class="drawer__brand">TECHNICAL CURATOR</div>
-    <CloseIcon id="drawer-close-button" class="drawer__close-button" />
+    <CloseIcon
+      id="drawer-close-button"
+      size="var(--space-xl)"
+      color="var(--secondary-400)"
+      class="drawer__close-button"
+      stroke-width="1.5"
+    />
   </div>
 
   <p class="drawer__index-label">00&nbsp;/&nbsp;INDEX</p>
@@ -64,7 +70,12 @@ const { links = [] } = Astro.props;
   <div class="drawer__cta">
     <a class="drawer__cta-link">
       HIRE ME
-      <RightArrowIcon class="drawer__cta-arrow" />
+      <RightArrowIcon
+        size="var(--space-lg)"
+        color="var(--neutral-50)"
+        stroke-width="2"
+        class="drawer__cta-arrow"
+      />
     </a>
   </div>
 
@@ -157,13 +168,6 @@ const { links = [] } = Astro.props;
   }
 
   .drawer__close-button {
-    fill: none;
-    height: var(--space-xl);
-    width: var(--space-xl);
-    stroke: var(--secondary-400);
-    stroke-width: 1.5px;
-    stroke-linecap: round;
-    stroke-linejoin: round;
     cursor: pointer;
     pointer-events: auto;
   }
@@ -204,13 +208,6 @@ const { links = [] } = Astro.props;
   }
 
   .drawer__cta-arrow {
-    width: var(--space-lg);
-    height: var(--space-lg);
-    fill: none;
-    stroke: var(--neutral-50);
-    stroke-width: 2px;
-    stroke-linecap: round;
-    stroke-linejoin: round;
     transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
