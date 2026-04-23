@@ -46,17 +46,17 @@ const NavigationLinks: Link[] = [
       <div class="nav__underline" id="nav-underline"></div>
     </div>
     <Button
-      text="HIRE ME"
-      fill="var(--primary-400)"
-      stroke="var(--primary-600)"
-      strokeWidth="1"
-      fontSize="var(--text-lg)"
-      textColor="var(--tertiary-600)"
-      hoverFill="transparent"
-      hoverTextColor="var(--tertiary-600)"
-      padding="var(--space-md) var(--space-xl)"
-      class="nav__hire-me"
-    />
+      styles={{
+        color: 'var(--tertiary-600)',
+        padding: 'var(--space-md) var(--space-xl)',
+        'border-color': 'var(--primary-600)',
+        'font-size': 'var(--text-lg)',
+        hover: {
+          'background-color': 'transparent',
+        },
+      }}
+      class="nav__hire-me">HIRE ME</Button
+    >
 
     <!-- Mobile Only -->
     <HumburgerMenu />
