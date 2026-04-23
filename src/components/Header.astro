@@ -1,15 +1,49 @@
 ---
 import Button from './Button.astro';
+import HumburgerMenu from './HumburgerMenu.astro';
+import MobileDrawer from './MobileDrawer.astro';
+import type { Link } from '@/types';
+
+const NavigationLinks: Link[] = [
+  {
+    id: '01',
+    label: 'WORK',
+    href: '/work',
+  },
+  {
+    id: '02',
+    label: 'BLOG',
+    href: '/blog',
+  },
+  {
+    id: '03',
+    label: 'ABOUT',
+    href: '/about',
+  },
+  {
+    id: '04',
+    label: 'HIRE ME',
+    href: '/hire me',
+  },
+];
 ---
 
 <header class="header">
-  <nav class="nav">
+  <nav class="nav" aria-label="Main navigation">
     <div class="nav__brand">@LEE.DEV/V1.0.1</div>
-    <div class="nav__links" id="navLinks">
-      <span class="nav__link nav__link--active">WORK</span>
-      <span class="nav__link">BLOG</span>
-      <span class="nav__link">ABOUT</span>
-      <div class="nav__underline" id="underline"></div>
+
+    <!-- Desktop Only -->
+    <div class="nav__links" id="nav-links">
+      {
+        NavigationLinks.slice(0, 3).map((link, index) => {
+          return (
+            <a class={`nav__link ${link.id == '01' && 'nav__link--active'}`}>
+              {link.label}
+            </a>
+          );
+        })
+      }
+      <div class="nav__underline" id="nav-underline"></div>
     </div>
     <Button
       text="HIRE ME"
@@ -21,9 +55,15 @@ import Button from './Button.astro';
       hoverFill="transparent"
       hoverTextColor="var(--tertiary-600)"
       padding="var(--space-md) var(--space-xl)"
+      class="nav__hire"
     />
+
+    <!-- Mobile Only -->
+    <HumburgerMenu />
   </nav>
 </header>
+
+<MobileDrawer links={NavigationLinks} />
 
 <style>
   .header {
@@ -35,28 +75,25 @@ import Button from './Button.astro';
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--gutter-md) var(--gutter-2xl);
+    padding: var(--gutter-sm) var(--gutter-md);
     margin: 0 auto;
-    width: 100%;
     max-width: var(--screen-xl);
   }
 
   .nav__brand {
-    font-size: var(--text-xl);
+    font-size: var(--text-lg);
     font-weight: bold;
     letter-spacing: 0.04rem;
     color: var(--tertiary-600);
   }
 
   .nav__hire {
-    padding: var(--space-md) var(--space-xl);
-    font: var(--text-lg);
-    border-radius: 1%;
+    display: none;
   }
 
   .nav__links {
     position: relative;
-    display: flex;
+    display: none;
     align-items: center;
     gap: var(--space-xl);
   }
@@ -68,6 +105,7 @@ import Button from './Button.astro';
     cursor: pointer;
     user-select: none;
     transition: color 0.2s ease;
+    text-decoration: none;
   }
 
   .nav__link--active {
@@ -85,11 +123,29 @@ import Button from './Button.astro';
       left 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
       width 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
+
+  @media (min-width: 768px) {
+    .nav {
+      padding: var(--gutter-md) var(--gutter-2xl);
+    }
+
+    .nav__brand {
+      font-size: var(--text-xl);
+    }
+
+    .nav__links {
+      display: flex;
+    }
+
+    .nav__hire {
+      display: inline-flex;
+    }
+  }
 </style>
 
 <script>
-  const navLinks = document.getElementById('navLinks')!;
-  const line = document.getElementById('underline')!;
+  const navLinks = document.getElementById('nav-links')!;
+  const line = document.getElementById('nav-underline')!;
   const links = navLinks.querySelectorAll<HTMLElement>('.nav__link');
 
   function moveLine(el: HTMLElement) {

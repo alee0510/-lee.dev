@@ -1,0 +1,431 @@
+---
+import type { Link } from '@/types';
+
+interface Props {
+  links: Link[];
+}
+
+const SocialMediaLinks: Link[] = [
+  {
+    id: '01',
+    label: 'LINKEDIN',
+    href: '/linkedin',
+  },
+  {
+    id: '02',
+    label: 'TWITTER',
+    href: '/twitter',
+  },
+  {
+    id: '03',
+    label: 'GITHUB',
+    href: '/github',
+  },
+];
+
+const { links = [] } = Astro.props;
+---
+
+<div id="drawer-backdrop" class="drawer__backdrop"></div>
+<aside
+  id="mobile-drawer"
+  class="drawer"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Navigation menu"
+  aria-hidden="true"
+>
+  <!-- close button -->
+  <div class="drawer__header">
+    <div class="drawer__header__brand">TECHNICAL CURATOR</div>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      class="drawer__close-btn"
+      id="drawer-close"
+      ><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
+    >
+  </div>
+
+  <p class="drawer__index__section">00&nbsp;/&nbsp;INDEX</p>
+
+  <!-- drawer navigation -->
+  <nav
+    id="mobile-navigation"
+    class="drawer__nav"
+    aria-label="mobile-navigation"
+  >
+    {
+      links.map((link) => (
+        <a class="drawer__nav__link">
+          <span>{link.id}&nbsp;/</span>
+          <span>{link.label}</span>
+        </a>
+      ))
+    }
+  </nav>
+
+  <div class="drawer__cta">
+    <a class="drawer__cta__link">
+      HIRE ME <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        class="drawer__cta__link__arrow"
+        ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
+      ></a
+    >
+  </div>
+
+  <div class="drawer__footer">
+    <div class="drawer__footer__content">
+      <span class="drawer__footer__content__label">STATUS</span>
+      <div class="drawer__footer__content__value">
+        <span class="drawer__footer__content__status-dot" aria-hidden="true"
+        ></span>
+        <span>AVAILABLE FOR PROJECTS</span>
+      </div>
+    </div>
+    <div class="drawer__footer__content">
+      <span class="drawer__footer__content__label">VERSION</span>
+      <span class="drawer__footer__content__value"
+        >V1.0.1&nbsp;//&nbsp;STABLE</span
+      >
+    </div>
+  </div>
+
+  <div class="drawer__social">
+    {
+      SocialMediaLinks.map((link) => (
+        <a class="drawer__social__link">{link.label}</a>
+      ))
+    }
+  </div>
+
+  <div class="drawer__locale">
+    <span class="drawer__locale__id">JAKARTA, ID</span>
+    <span class="drawer__locale__time" id="locale-time">GMT+7 / --:--:--</span>
+  </div>
+</aside>
+
+<style>
+  .drawer {
+    position: fixed;
+    inset-block: 0;
+    inset-inline-start: 0;
+    z-index: 1100;
+    width: min(100vw, 420px);
+    height: 100dvh;
+    background-color: var(--neutral-50);
+    background-image: radial-gradient(
+      circle,
+      var(--tertiary-20) 1px,
+      transparent 1px
+    );
+    background-size: var(--space-xl) var(--space-xl);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transform: translateX(-100%);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .drawer--open {
+    transform: translateX(0);
+  }
+
+  .drawer__backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: var(--tertiary-80);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+  }
+
+  .drawer__backdrop.is-visible {
+    display: block;
+  }
+
+  .drawer__backdrop--open {
+    opacity: 1;
+  }
+
+  .drawer__header {
+    padding: var(--space-md);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .drawer__header__brand {
+    flex: 1;
+    font-size: var(--text-lg);
+  }
+
+  .drawer__close-btn {
+    fill: none;
+    height: var(--space-xl);
+    width: var(--space-xl);
+    stroke: var(--secondary-400);
+    stroke-width: 1.5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  .drawer__index__section {
+    font-size: var(--text-sm);
+    color: var(--secondary-300);
+  }
+
+  .drawer__nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .drawer__nav__link {
+    border-bottom: 0.7px solid var(--tertiary-20);
+    text-decoration: none;
+    user-select: none;
+    cursor: pointer;
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    letter-spacing: 0.02rem;
+    padding-bottom: var(--space-md);
+  }
+
+  .drawer__cta__link {
+    background: var(--tertiary-800);
+    color: var(--neutral-50);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-lg);
+    font-size: var(--text-lg);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .drawer__cta__link__arrow {
+    width: var(--space-lg);
+    height: var(--space-lg);
+    fill: none;
+    stroke: var(--neutral-50);
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .drawer__cta__link:hover {
+    background: var(--tertiary-60);
+  }
+
+  .drawer__cta__link:hover .drawer__cta__link__arrow {
+    transform: translateX(var(--space-sm));
+  }
+
+  .drawer__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .drawer__footer__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    font-size: var(--text-xs);
+  }
+
+  .drawer__footer__content__label {
+    font-size: var(--text-xs);
+    color: var(--secondary-300);
+  }
+
+  .drawer__footer__content__value {
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .drawer__footer__content__status-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--primary-500);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--primary-60);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 2px var(--primary-60);
+    }
+    50% {
+      box-shadow: 0 0 0 4px var(--primary-90);
+    }
+  }
+
+  .drawer__social {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .drawer__social__link {
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    font-size: var(--text-sm);
+    color: var(--secondary-400);
+    transition: color 0.2s ease;
+  }
+
+  .drawer__social a:hover {
+    color: var(--primary-400);
+  }
+
+  .drawer__locale {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: end;
+  }
+
+  .drawer__locale__id {
+    font-size: var(--text-xs);
+    color: var(--secondary-300);
+  }
+
+  .drawer__locale__time {
+    font-size: var(--text-sm);
+    color: var(--primary-400);
+  }
+
+  .drawer__index__section,
+  .drawer__nav,
+  .drawer__cta,
+  .drawer__footer,
+  .drawer__social,
+  .drawer__locale {
+    padding: var(--space-sm) var(--space-xl);
+  }
+
+  @media (min-width: 768px) {
+    .drawer,
+    .drawer__backdrop {
+      display: none !important;
+    }
+  }
+
+  :global(body.drawer--open) {
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  function main() {
+    const humberger = document.getElementById(
+      'humberger-menu'
+    ) as HTMLElement | null;
+    const drawer = document.getElementById(
+      'mobile-drawer'
+    ) as HTMLElement | null;
+    const backdrop = document.getElementById(
+      'drawer-backdrop'
+    ) as HTMLElement | null;
+    const closeBtn = document.getElementById(
+      'drawer-close'
+    ) as HTMLButtonElement | null;
+    // Trap focus inside drawer
+    const focusableSelectors =
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+    function trapFocus(e: KeyboardEvent) {
+      if (!drawer) return;
+      const focusAble = Array.from(
+        drawer.querySelectorAll<HTMLElement>(focusableSelectors)
+      );
+      const first = focusAble[0];
+      const last = focusAble[focusAble.length - 1];
+
+      if (e.key === 'Tab' && e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      }
+
+      if (e.key === 'Tab' && !e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+
+      if (e.key === 'Escape') closeDrawer();
+    }
+
+    function openDrawer() {
+      backdrop!.style.display = 'block';
+      void backdrop!.offsetHeight;
+
+      backdrop!.classList.add('drawer__backdrop--open');
+      drawer!.classList.add('drawer--open');
+      drawer!.setAttribute('aria-hidden', 'false');
+      humberger!.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('drawer--open');
+      document.addEventListener('keydown', trapFocus);
+
+      const firstFocusAble =
+        drawer!.querySelector<HTMLElement>(focusableSelectors);
+      firstFocusAble?.focus();
+    }
+
+    function closeDrawer() {
+      backdrop!.classList.remove('drawer__backdrop--open');
+      drawer!.classList.remove('drawer--open');
+      drawer!.setAttribute('aria-hidden', 'true');
+      humberger!.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('drawer--open');
+      document.removeEventListener('keydown', trapFocus);
+
+      backdrop!.addEventListener(
+        'transitionend',
+        () => {
+          backdrop!.style.display = 'none';
+        },
+        { once: true }
+      );
+
+      humberger!.focus();
+    }
+
+    // attach event listeners
+    humberger?.addEventListener('click', () => {
+      const isOpen = drawer!.classList.contains('drawer--open');
+      isOpen ? closeDrawer() : openDrawer();
+    });
+
+    closeBtn?.addEventListener('click', closeDrawer);
+    backdrop?.addEventListener('click', closeDrawer);
+
+    // close drawer on nav link click (SPA-style navigation)
+    drawer
+      ?.querySelectorAll<HTMLAnchorElement>('.drawer__nav-link, .drawer__cta')
+      .forEach((link) => {
+        link.addEventListener('click', closeDrawer);
+      });
+  }
+
+  main();
+</script>
