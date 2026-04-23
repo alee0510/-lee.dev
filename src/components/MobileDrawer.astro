@@ -37,17 +37,17 @@ const { links = [] } = Astro.props;
 >
   <!-- close button -->
   <div class="drawer__header">
-    <div class="drawer__header__brand">TECHNICAL CURATOR</div>
+    <div class="drawer__brand">TECHNICAL CURATOR</div>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      class="drawer__close-btn"
+      class="drawer__close-button"
       id="drawer-close"
       ><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
     >
   </div>
 
-  <p class="drawer__index__section">00&nbsp;/&nbsp;INDEX</p>
+  <p class="drawer__index-label">00&nbsp;/&nbsp;INDEX</p>
 
   <!-- drawer navigation -->
   <nav
@@ -57,7 +57,7 @@ const { links = [] } = Astro.props;
   >
     {
       links.map((link) => (
-        <a class="drawer__nav__link">
+        <a class="drawer__nav-link">
           <span>{link.id}&nbsp;/</span>
           <span>{link.label}</span>
         </a>
@@ -66,44 +66,41 @@ const { links = [] } = Astro.props;
   </nav>
 
   <div class="drawer__cta">
-    <a class="drawer__cta__link">
+    <a class="drawer__cta-link">
       HIRE ME <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        class="drawer__cta__link__arrow"
+        class="drawer__cta-arrow"
         ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
       ></a
     >
   </div>
 
   <div class="drawer__footer">
-    <div class="drawer__footer__content">
-      <span class="drawer__footer__content__label">STATUS</span>
-      <div class="drawer__footer__content__value">
-        <span class="drawer__footer__content__status-dot" aria-hidden="true"
-        ></span>
+    <div class="drawer__footer-content">
+      <span class="drawer__footer-label">STATUS</span>
+      <div class="drawer__footer-value">
+        <span class="drawer__footer-status-dot" aria-hidden="true"></span>
         <span>AVAILABLE FOR PROJECTS</span>
       </div>
     </div>
-    <div class="drawer__footer__content">
-      <span class="drawer__footer__content__label">VERSION</span>
-      <span class="drawer__footer__content__value"
-        >V1.0.1&nbsp;//&nbsp;STABLE</span
-      >
+    <div class="drawer__footer-content">
+      <span class="drawer__footer-label">VERSION</span>
+      <span class="drawer__footer-value">V1.0.1&nbsp;//&nbsp;STABLE</span>
     </div>
   </div>
 
   <div class="drawer__social">
     {
       SocialMediaLinks.map((link) => (
-        <a class="drawer__social__link">{link.label}</a>
+        <a class="drawer__social-link">{link.label}</a>
       ))
     }
   </div>
 
   <div class="drawer__locale">
-    <span class="drawer__locale__id">JAKARTA, ID</span>
-    <span class="drawer__locale__time" id="locale-time">GMT+7 / --:--:--</span>
+    <span class="drawer__locale-id">JAKARTA, ID</span>
+    <span class="drawer__locale-time" id="locale-time">GMT+7 / --:--:--</span>
   </div>
 </aside>
 
@@ -144,7 +141,6 @@ const { links = [] } = Astro.props;
     background: var(--tertiary-80);
     opacity: 0;
     transition: opacity 0.35s ease;
-    -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
   }
 
@@ -163,12 +159,12 @@ const { links = [] } = Astro.props;
     align-items: center;
   }
 
-  .drawer__header__brand {
+  .drawer__brand {
     flex: 1;
     font-size: var(--text-lg);
   }
 
-  .drawer__close-btn {
+  .drawer__close-button {
     fill: none;
     height: var(--space-xl);
     width: var(--space-xl);
@@ -180,7 +176,7 @@ const { links = [] } = Astro.props;
     pointer-events: auto;
   }
 
-  .drawer__index__section {
+  .drawer__index-label {
     font-size: var(--text-sm);
     color: var(--secondary-300);
   }
@@ -191,7 +187,7 @@ const { links = [] } = Astro.props;
     gap: var(--space-lg);
   }
 
-  .drawer__nav__link {
+  .drawer__nav-link {
     border-bottom: 0.7px solid var(--tertiary-20);
     text-decoration: none;
     user-select: none;
@@ -202,7 +198,7 @@ const { links = [] } = Astro.props;
     padding-bottom: var(--space-md);
   }
 
-  .drawer__cta__link {
+  .drawer__cta-link {
     background: var(--tertiary-800);
     color: var(--neutral-50);
     display: flex;
@@ -215,7 +211,7 @@ const { links = [] } = Astro.props;
     transition: background 0.2s;
   }
 
-  .drawer__cta__link__arrow {
+  .drawer__cta-arrow {
     width: var(--space-lg);
     height: var(--space-lg);
     fill: none;
@@ -226,11 +222,11 @@ const { links = [] } = Astro.props;
     transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .drawer__cta__link:hover {
+  .drawer__cta-link:hover {
     background: var(--tertiary-60);
   }
 
-  .drawer__cta__link:hover .drawer__cta__link__arrow {
+  .drawer__cta-link:hover .drawer__cta-arrow {
     transform: translateX(var(--space-sm));
   }
 
@@ -240,26 +236,26 @@ const { links = [] } = Astro.props;
     justify-content: space-between;
   }
 
-  .drawer__footer__content {
+  .drawer__footer-content {
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
     font-size: var(--text-xs);
   }
 
-  .drawer__footer__content__label {
+  .drawer__footer-label {
     font-size: var(--text-xs);
     color: var(--secondary-300);
   }
 
-  .drawer__footer__content__value {
+  .drawer__footer-value {
     font-weight: 700;
     display: flex;
     align-items: center;
     gap: 0.45rem;
   }
 
-  .drawer__footer__content__status-dot {
+  .drawer__footer-status-dot {
     width: 6px;
     height: 6px;
     background: var(--primary-500);
@@ -273,6 +269,7 @@ const { links = [] } = Astro.props;
     100% {
       box-shadow: 0 0 0 2px var(--primary-60);
     }
+
     50% {
       box-shadow: 0 0 0 4px var(--primary-90);
     }
@@ -284,7 +281,7 @@ const { links = [] } = Astro.props;
     gap: var(--space-md);
   }
 
-  .drawer__social__link {
+  .drawer__social-link {
     text-decoration: none;
     cursor: pointer;
     user-select: none;
@@ -305,17 +302,17 @@ const { links = [] } = Astro.props;
     justify-content: end;
   }
 
-  .drawer__locale__id {
+  .drawer__locale-id {
     font-size: var(--text-xs);
     color: var(--secondary-300);
   }
 
-  .drawer__locale__time {
+  .drawer__locale-time {
     font-size: var(--text-sm);
     color: var(--primary-400);
   }
 
-  .drawer__index__section,
+  .drawer__index-label,
   .drawer__nav,
   .drawer__cta,
   .drawer__footer,
@@ -324,7 +321,7 @@ const { links = [] } = Astro.props;
     padding: var(--space-sm) var(--space-xl);
   }
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     .drawer,
     .drawer__backdrop {
       display: none !important;

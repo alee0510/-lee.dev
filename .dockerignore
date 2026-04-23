@@ -1,0 +1,11 @@
+node_modules
+.git
+.gitignore
+.vscode
+.prettierrc
+.eslint.config.mjs
+.env
+*.log
+README.md
+Dockerfile
+docker-compose.yaml
