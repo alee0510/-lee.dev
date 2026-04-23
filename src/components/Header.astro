@@ -75,13 +75,13 @@ const NavigationLinks: Link[] = [
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--gutter-md) var(--gutter-2xl);
+    padding: var(--gutter-sm) var(--gutter-md);
     margin: 0 auto;
     max-width: var(--screen-xl);
   }
 
   .nav__brand {
-    font-size: var(--text-xl);
+    font-size: var(--text-lg);
     font-weight: bold;
     letter-spacing: 0.04rem;
     color: var(--tertiary-600);
@@ -125,6 +125,14 @@ const NavigationLinks: Link[] = [
   }
 
   @media (min-width: 768px) {
+    .nav {
+      padding: var(--gutter-md) var(--gutter-2xl);
+    }
+
+    .nav__brand {
+      font-size: var(--text-xl);
+    }
+
     .nav__links {
       display: flex;
     }
