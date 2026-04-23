@@ -141,7 +141,6 @@ const { links = [] } = Astro.props;
     background: var(--tertiary-80);
     opacity: 0;
     transition: opacity 0.35s ease;
-    -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
   }
 
@@ -270,6 +269,7 @@ const { links = [] } = Astro.props;
     100% {
       box-shadow: 0 0 0 2px var(--primary-60);
     }
+
     50% {
       box-shadow: 0 0 0 4px var(--primary-90);
     }
@@ -321,7 +321,7 @@ const { links = [] } = Astro.props;
     padding: var(--space-sm) var(--space-xl);
   }
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     .drawer,
     .drawer__backdrop {
       display: none !important;
