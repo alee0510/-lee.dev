@@ -41,10 +41,63 @@ const { class: className, type = 'wide', ...props } = Astro.props;
   .card {
     display: flex;
     flex-direction: column;
+    position: relative;
+    padding: var(--space-sm);
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0px;
+    --b: 2px;
+    --c: 13px;
+    background:
+      conic-gradient(
+          from 90deg at top var(--b) left var(--b),
+          #0000 25%,
+          var(--primary-400) 0
+        )
+        0 0 / var(--c) var(--c),
+      conic-gradient(
+          from 180deg at top var(--b) right var(--b),
+          #0000 25%,
+          var(--primary-400) 0
+        )
+        100% 0 / var(--c) var(--c),
+      conic-gradient(
+          from 0deg at bottom var(--b) left var(--b),
+          #0000 25%,
+          var(--primary-400) 0
+        )
+        0 100% / var(--c) var(--c),
+      conic-gradient(
+          from -90deg at bottom var(--b) right var(--b),
+          #0000 25%,
+          var(--primary-400) 0
+        )
+        100% 100% / var(--c) var(--c);
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition:
+      opacity 0.3s ease,
+      inset 0.3s ease;
+    pointer-events: none;
+  }
+
+  .card:hover::before {
+    opacity: 1;
+    inset: -5px;
   }
 
   .card__thumbnail {
     position: relative;
+  }
+
+  .card__tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
   }
 
   .card__tag {
@@ -71,6 +124,7 @@ const { class: className, type = 'wide', ...props } = Astro.props;
     color: var(--tertiary-900);
     font-size: var(--text-2xl);
     font-weight: 700;
+    margin-block-end: 0;
   }
 
   .card__desc {
