@@ -1,6 +1,6 @@
 ---
-import CloseIcon from '@/assets/icons/CloseIcon.astro';
-import RightArrowIcon from '@/assets/icons/RightArrowIcon.astro';
+import Close from '@/assets/icons/Close.astro';
+import ArrowRight from '@/assets/icons/ArrowRight.astro';
 import type { Link } from '@/types';
 
 interface Props {
@@ -40,7 +40,7 @@ const { links = [] } = Astro.props;
   <!-- close button -->
   <div class="drawer__header">
     <div class="drawer__brand">TECHNICAL CURATOR</div>
-    <CloseIcon
+    <Close
       id="drawer-close-button"
       size="var(--space-xl)"
       color="var(--secondary-400)"
@@ -70,7 +70,7 @@ const { links = [] } = Astro.props;
   <div class="drawer__cta">
     <a class="drawer__cta-link">
       HIRE ME
-      <RightArrowIcon
+      <ArrowRight
         size="var(--space-lg)"
         color="var(--neutral-50)"
         stroke-width="2"
