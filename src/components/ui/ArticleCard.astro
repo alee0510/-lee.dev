@@ -12,7 +12,7 @@ const { class: className, type = 'wide', ...props } = Astro.props;
 <div class={`card ${className}`} {...props}>
   <div class="card__thumbnail">
     <span class="card__tag card__tag--absolue">01. ROBOTIC CORE</span>
-    <Image src={Sample} class="card__image" alt="card-image" height="500" />
+    <Image src={Sample} class="card__image" alt="card-image" />
   </div>
   <div class="card__desc">
     <h3
@@ -101,10 +101,10 @@ const { class: className, type = 'wide', ...props } = Astro.props;
   }
 
   .card__tag {
-    background-color: var(--neutral-50);
-    padding: var(--space-sm) var(--space-lg);
-    font-size: var(--text-sm);
+    padding: var(--space-xs) var(--space-md);
     color: var(--neutral-700);
+    font-size: var(--text-xs);
+    background-color: var(--neutral-50);
   }
 
   .card__tag--absolue {
@@ -116,38 +116,60 @@ const { class: className, type = 'wide', ...props } = Astro.props;
 
   .card__image {
     width: 100%;
-    height: 100;
+    height: 450px;
     object-fit: cover;
   }
 
   .card__title {
     color: var(--tertiary-900);
-    font-size: var(--text-2xl);
+    font-size: var(--text-xl);
     font-weight: 700;
     margin-block-end: 0;
   }
 
   .card__desc {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-sm);
+    grid-template-columns: 1fr;
+    gap: var(--space-xs);
+    font-size: var(--text-sm);
   }
 
-  .card__title--wide {
-    grid-column: 1 / 3;
-  }
+  @media (width >= 768px) {
+    .card__title {
+      font-size: var(--text-2xl);
+    }
 
-  .card__summary--wide {
-    grid-column: 3 / 5;
-  }
+    .card__desc {
+      font-size: var(--text-base);
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-sm);
+    }
 
-  .card__tags--wide {
-    grid-column: 1 / 5;
-  }
+    .card__image {
+      height: 500px;
+    }
 
-  .card__title--portrait,
-  .card__summary--portrait,
-  .card__tags--portrait {
-    grid-column: 1 / 5;
+    .card__tag {
+      font-size: var(--text-sm);
+      padding: var(--space-sm) var(--space-lg);
+    }
+
+    .card__title--wide {
+      grid-column: 1 / 3;
+    }
+
+    .card__summary--wide {
+      grid-column: 3 / 5;
+    }
+
+    .card__tags--wide {
+      grid-column: 1 / 5;
+    }
+
+    .card__title--portrait,
+    .card__summary--portrait,
+    .card__tags--portrait {
+      grid-column: 1 / 5;
+    }
   }
 </style>
