@@ -10,8 +10,5 @@ export default defineConfig({
         '@': path.resolve('./src'),
       },
     },
-    build: {
-      cssMinify: false,
-    },
   },
 });
