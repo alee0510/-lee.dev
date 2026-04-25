@@ -1,0 +1,88 @@
+---
+import ArrowUpRight from '@/assets/icons/ArrowUpRight.astro';
+---
+
+<div class="insight-card">
+  <p class="insight-card__date">OCT 14, 2023</p>
+  <div class="insight-card__content">
+    <h1 class="insight-card__title">The Case to Technical Brutalism</h1>
+    <p class="insight-card__desc">
+      Why engineering-led design is overtaking the soft web.
+    </p>
+  </div>
+  <div class="insight-card__tags">
+    <span class="insight-card__tag">ENGINEERING</span>
+    <ArrowUpRight color="var(--neutral-600)" size="24" stroke-width="2" />
+  </div>
+</div>
+
+<style>
+  .insight-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-block: var(--gutter-xl);
+  }
+
+  .insight-card__date {
+    font-size: var(--text-xs);
+    color: var(--secondary-300);
+    margin-block: 0;
+  }
+
+  .insight-card__title {
+    font-size: var(--text-xl);
+    margin-block: 0.5rem;
+  }
+
+  .insight-card__desc {
+    margin-block: 0;
+    color: var(--secondary-300);
+    font-size: var(--text-sm);
+  }
+
+  .insight-card__tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .insight-card__tag {
+    color: var(--neutral-600);
+    font-size: var(--text-xs);
+    padding: var(--space-xs) var(--space-md);
+    background-color: var(--neutral-200);
+  }
+
+  @media (width >= 768px) {
+    .insight-card {
+      flex-direction: row;
+      align-items: center;
+      gap: var(--space-3xl);
+    }
+
+    .insight-card__content {
+      flex: 1;
+    }
+
+    .insight-card__title {
+      font-size: var(--text-2xl);
+      margin-block: var(--space-md);
+    }
+
+    .insight-card__date {
+      font-size: var(--text-sm);
+    }
+
+    .insight-card__desc {
+      font-size: var(--text-base);
+    }
+
+    .insight-card__tag {
+      font-size: var(--text-sm);
+      padding: var(--space-sm) var(--space-lg);
+    }
+  }
+</style>

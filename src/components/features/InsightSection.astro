@@ -1,0 +1,73 @@
+---
+import InsightCard from '@/components/ui/InsightCard.astro';
+---
+
+<section id="insights" class="insight">
+  <div class="insight__header">
+    <p class="insight__section">02&nbsp;/&nbsp;INSIGHTS</p>
+    <div class="insight__title-container">
+      <span class="insight__title">LATEST WRITING</span>
+      <span class="insight__info">THOUGHT & DATA</span>
+    </div>
+  </div>
+  <div class="insight__lists">
+    <InsightCard />
+    <InsightCard />
+    <InsightCard />
+    <InsightCard />
+  </div>
+</section>
+
+<style>
+  .insight {
+    margin: 0 auto;
+    padding: var(--gutter-md) var(--gutter-lg);
+    max-width: var(--screen-xl);
+  }
+
+  .insight__section {
+    color: var(--primary-400);
+    font-size: var(--text-xs);
+    font-weight: 500;
+  }
+
+  .insight__title-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-sm);
+  }
+
+  .insight__title {
+    color: var(--tertiary-900);
+    font-size: var(--text-xl);
+    font-weight: 700;
+  }
+
+  .insight__info {
+    font-size: var(--text-xs);
+    color: var(--neutral-700);
+  }
+
+  .insight__lists {
+    margin-block: var(--gutter-sm);
+  }
+
+  @media (width >= 768px) {
+    .insight {
+      padding: var(--gutter-md) var(--gutter-xl);
+    }
+
+    .insight__section {
+      font-size: var(--text-sm);
+    }
+
+    .insight__title {
+      font-size: var(--text-2xl);
+    }
+
+    .insight__info {
+      font-size: var(--text-sm);
+    }
+  }
+</style>
