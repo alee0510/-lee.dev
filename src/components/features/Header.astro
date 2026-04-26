@@ -2,30 +2,7 @@
 import Button from '@/components/ui/Button.astro';
 import HumburgerMenu from '@/components/ui/HumburgerMenu.astro';
 import MobileDrawer from './MobileDrawer.astro';
-import type { Link } from '@/types';
-
-const NavigationLinks: Link[] = [
-  {
-    id: '01',
-    label: 'WORK',
-    href: '/work',
-  },
-  {
-    id: '02',
-    label: 'BLOG',
-    href: '/blog',
-  },
-  {
-    id: '03',
-    label: 'ABOUT',
-    href: '/about',
-  },
-  {
-    id: '04',
-    label: 'HIRE ME',
-    href: '/hire me',
-  },
-];
+import { NavigationLinks } from '@/constants/NavLinks';
 ---
 
 <header class="header">

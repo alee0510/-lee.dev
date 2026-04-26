@@ -1,29 +1,12 @@
 ---
 import Close from '@/assets/icons/Close.astro';
 import ArrowRight from '@/assets/icons/ArrowRight.astro';
-import type { Link } from '@/types';
+import { SocialMediaLinks } from '@/constants/SocialLinks';
+import type { Link } from '@/types/index';
 
 interface Props {
   links: Link[];
 }
-
-const SocialMediaLinks: Link[] = [
-  {
-    id: '01',
-    label: 'LINKEDIN',
-    href: '/linkedin',
-  },
-  {
-    id: '02',
-    label: 'TWITTER',
-    href: '/twitter',
-  },
-  {
-    id: '03',
-    label: 'GITHUB',
-    href: '/github',
-  },
-];
 
 const { links = [] } = Astro.props;
 ---
