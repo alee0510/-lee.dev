@@ -1,5 +1,7 @@
 ---
 import '@/styles/global.css';
+import Header from '@/components/features/Header.astro';
+import Footer from '@/components/features/Footer.astro';
 ---
 
 <!doctype html>
@@ -13,18 +15,24 @@ import '@/styles/global.css';
     <title>@Lee.dev</title>
   </head>
   <body class="grid">
-    <slot name="header" />
-    <slot />
-    <slot name="footer" />
+    <Header />
+    <main class="main">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
 
 <style>
   .grid {
-    background-color: #fff;
+    background-color: var(--neutral-100);
     background-image:
-      linear-gradient(#e5e5e5 1px, transparent 1px),
-      linear-gradient(90deg, #e5e5e5 1px, transparent 1px);
-    background-size: 40px 40px;
+      linear-gradient(var(--neutral-200) 1px, transparent 1px),
+      linear-gradient(90deg, var(--neutral-200) 1px, transparent 1px);
+    background-size: var(--gutter-lg) var(--gutter-lg);
+  }
+
+  .main {
+    margin-top: var(--gutter-3xl);
   }
 </style>

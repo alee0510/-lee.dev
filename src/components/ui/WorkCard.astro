@@ -1,0 +1,131 @@
+---
+import Image from 'astro/components/Image.astro';
+import Sample from '@/assets/images/sample.jpg';
+
+interface Props {
+  class?: string;
+  type: 'wide' | 'portrait';
+}
+
+const { class: className, type = 'wide', ...props } = Astro.props;
+---
+
+<div class={`work-card bracket ${className}`} {...props}>
+  <div class="work-card__thumbnail">
+    <span class="work-card__tag tag work-card__tag--absolue"
+      >01. ROBOTIC CORE</span
+    >
+    <Image src={Sample} class="work-card__image" alt="work-card-image" />
+  </div>
+  <div class="work-card__desc">
+    <h3
+      class={`work-card__title ${type === 'wide' ? 'work-card__title--wide' : 'work-card__title--portrait'}`}
+    >
+      NEURO INTEFACE
+    </h3>
+    <p
+      class={`work-card__summary ${type === 'wide' ? 'work-card__summary--wide' : 'work-card__summary--portrait'}`}
+    >
+      Developing low-latency neutral interface for next-generation automated
+      surgical procedure.
+    </p>
+    <div
+      class={`work-card__tags ${type === 'wide' ? 'work-card__tags--wide' : 'work-card__tags--portrait'}`}
+    >
+      <span class="work-card__tag tag">RUST</span>
+      <span class="work-card__tag tag">WASP</span>
+      <span class="work-card__tag tag">LLM</span>
+      <span class="work-card__tag tag">NODE.JS</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .work-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: var(--space-sm);
+  }
+
+  .work-card__thumbnail {
+    position: relative;
+  }
+
+  .work-card__tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .work-card__tag {
+    color: var(--neutral-600);
+    background-color: var(--neutral-50);
+  }
+
+  .work-card__tag--absolue {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-10px, 10px);
+  }
+
+  .work-card__image {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+  }
+
+  .work-card__title {
+    color: var(--neutral-800);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    margin-block-end: 0;
+  }
+
+  .work-card__desc {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xs);
+    font-size: var(--text-sm);
+  }
+
+  .work-card__summary {
+    color: var(--neutral-600);
+  }
+
+  @media (width >= 768px) {
+    .work-card__title {
+      font-size: var(--text-2xl);
+    }
+
+    .work-card__desc {
+      font-size: var(--text-base);
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-sm);
+    }
+
+    .work-card__image {
+      height: 500px;
+    }
+
+    .work-card__title--wide {
+      grid-column: 1 / 3;
+    }
+
+    .work-card__summary--wide {
+      grid-column: 3 / 5;
+    }
+
+    .work-card__tags--wide {
+      grid-column: 1 / 5;
+    }
+
+    .work-card__title--portrait,
+    .work-card__summary--portrait,
+    .work-card__tags--portrait {
+      grid-column: 1 / 5;
+    }
+  }
+</style>

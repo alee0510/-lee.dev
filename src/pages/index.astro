@@ -1,9 +1,15 @@
 ---
+import '@/styles/layout.css';
 import Layout from '@/layouts/Layout.astro';
-import Header from '@/components/Header.astro';
+import MainSection from '@/components/features/MainSection.astro';
+import WorkSection from '@/components/features/WorkSection.astro';
+import InsightSection from '@/components/features/InsightSection.astro';
+import SubscribeSection from '@/components/features/SubscribeSection.astro';
 ---
 
 <Layout>
-  <Header slot="header" />
-  <!-- <h1>Hellow</h1> -->
+  <MainSection />
+  <WorkSection />
+  <InsightSection />
+  <SubscribeSection />
 </Layout>

@@ -1,0 +1,83 @@
+---
+import WrokCard from '@/components/ui/WorkCard.astro';
+---
+
+<section id="selected-work" class="work container">
+  <div class="work__header">
+    <p class="section-index">01&nbsp;/&nbsp;SELECTED WORK</p>
+    <div class="work__title-container">
+      <span class="work__title title">CASE STUDIES</span>
+      <span class="work__info info"
+        >SCROLL TO EXPLORE<span class="work__archive"
+          >&nbsp;/&nbsp;ACHIEVE 2020-2026</span
+        >
+      </span>
+    </div>
+    <div class="work__contents">
+      <WrokCard class="work--01" type="wide" />
+      <WrokCard class="work--02" type="portrait" />
+      <WrokCard class="work--03" type="portrait" />
+      <WrokCard class="work--04" type="wide" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .work {
+    background-color: var(--neutral-200);
+  }
+
+  .work__title-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-sm);
+  }
+
+  .work__title {
+    color: var(--neutral-800);
+  }
+
+  .work__info {
+    color: var(--neutral-600);
+  }
+
+  .work__archive {
+    display: none;
+  }
+
+  .work__contents {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    margin-block: var(--gutter-sm);
+  }
+
+  @media (width >= 768px) {
+    .work__contents {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+      margin-block: var(--gutter-lg);
+    }
+
+    .work__archive {
+      display: inline-block;
+    }
+
+    .work--01 {
+      grid-column: 1 / 3;
+    }
+
+    .work--02 {
+      grid-column: 3 / 4;
+    }
+
+    .work--03 {
+      grid-column: 1 / 2;
+    }
+
+    .work--04 {
+      grid-column: 2 / 4;
+    }
+  }
+</style>

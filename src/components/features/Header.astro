@@ -1,31 +1,8 @@
 ---
-import Button from './Button.astro';
-import HumburgerMenu from './HumburgerMenu.astro';
+import Button from '@/components/ui/Button.astro';
+import HumburgerMenu from '@/components/ui/HumburgerMenu.astro';
 import MobileDrawer from './MobileDrawer.astro';
-import type { Link } from '@/types';
-
-const NavigationLinks: Link[] = [
-  {
-    id: '01',
-    label: 'WORK',
-    href: '/work',
-  },
-  {
-    id: '02',
-    label: 'BLOG',
-    href: '/blog',
-  },
-  {
-    id: '03',
-    label: 'ABOUT',
-    href: '/about',
-  },
-  {
-    id: '04',
-    label: 'HIRE ME',
-    href: '/hire me',
-  },
-];
+import { NavigationLinks } from '@/constants/NavLinks';
 ---
 
 <header class="header">
@@ -46,17 +23,17 @@ const NavigationLinks: Link[] = [
       <div class="nav__underline" id="nav-underline"></div>
     </div>
     <Button
-      text="HIRE ME"
-      fill="var(--primary-400)"
-      stroke="var(--primary-600)"
-      strokeWidth="1"
-      fontSize="var(--text-lg)"
-      textColor="var(--tertiary-600)"
-      hoverFill="transparent"
-      hoverTextColor="var(--tertiary-600)"
-      padding="var(--space-md) var(--space-xl)"
-      class="nav__hire-me"
-    />
+      styles={{
+        color: 'var(--tertiary-600)',
+        padding: 'var(--space-md) var(--space-2xl)',
+        'border-color': 'var(--primary-600)',
+        'font-size': 'var(--text-lg)',
+        hover: {
+          'background-color': 'transparent',
+        },
+      }}
+      class="nav__hire-me">HIRE ME</Button
+    >
 
     <!-- Mobile Only -->
     <HumburgerMenu />
@@ -69,6 +46,9 @@ const NavigationLinks: Link[] = [
   .header {
     width: 100%;
     background: var(--neutral-80);
+    position: fixed;
+    top: 0;
+    z-index: 900;
   }
 
   .nav {

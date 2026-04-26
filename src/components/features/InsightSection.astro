@@ -1,0 +1,40 @@
+---
+import InsightCard from '@/components/ui/InsightCard.astro';
+---
+
+<section id="insights" class="insight container">
+  <div class="insight__header">
+    <p class="insight__section section-index">02&nbsp;/&nbsp;INSIGHTS</p>
+    <div class="insight__title-container">
+      <span class="insight__title title">LATEST WRITING</span>
+      <span class="insight__info info">THOUGHT & DATA</span>
+    </div>
+  </div>
+  <div class="insight__lists">
+    <InsightCard />
+    <InsightCard />
+    <InsightCard />
+    <InsightCard />
+  </div>
+</section>
+
+<style>
+  .insight__title-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-sm);
+  }
+
+  .insight__title {
+    color: var(--neutral-800);
+  }
+
+  .insight__info {
+    color: var(--neutral-600);
+  }
+
+  .insight__lists {
+    margin-block: var(--gutter-sm);
+  }
+</style>

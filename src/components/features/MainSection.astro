@@ -1,0 +1,170 @@
+---
+import { Image } from 'astro:assets';
+import Button from '@/components/ui/Button.astro';
+import ArrowRight from '@/assets/icons/ArrowRight.astro';
+import Persona from '@/assets/images/persona.webp';
+---
+
+<section id="main-banner" class="banner container">
+  <div class="banner__content">
+    <p class="banner__intro section-index">00&nbsp;/&nbsp;INTRODUCTION</p>
+    <h1 class="banner__title">Crafting Digital Experience</h1>
+    <p class="banner__desc">
+      A technical curator specialized in high-perfomance web system and
+      editorial-grade user interface for foward thinking engineering firm.
+    </p>
+    <div class="banner__cta">
+      <Button
+        class="banner__view-work"
+        icon={true}
+        styles={{
+          padding: 'var(--gutter-sm) var(--gutter-2xl)',
+          'background-color': 'var(--tertiary-900)',
+          'border-color': 'var(--tertiary-900)',
+          hover: {
+            color: 'var(--neutral-50)',
+            'background-color': 'var(--tertiary-400)',
+          },
+        }}
+      >
+        VIEW WORK
+        <ArrowRight
+          class="banner__arrow"
+          size="var(--text-2xl)"
+          stroke-width="1.5"
+        />
+      </Button>
+      <Button
+        class="banner__get-in-touch"
+        styles={{
+          padding: 'var(--gutter-sm) var(--gutter-2xl)',
+          color: 'var(--secondary-800)',
+          'background-color': 'transparent',
+          'border-width': '3',
+          'border-color': 'var(--tertiary-900)',
+          hover: {
+            color: 'var(--neutral-50)',
+            'background-color': 'var(--tertiary-900)',
+          },
+        }}
+      >
+        GET IN TOUCH
+      </Button>
+    </div>
+  </div>
+  <div class="banner__persona">
+    <Image
+      src={Persona}
+      class="banner_image"
+      alt="persona-image"
+      width="400"
+      height="533"
+    />
+    <div class="banner__version">V.24</div>
+  </div>
+</section>
+
+<style>
+  .banner__title {
+    font-size: var(--text-3xl);
+    color: var(--secondary-900);
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+
+  .banner__desc {
+    font-size: var(--text-base);
+    color: var(--secondary-400);
+    margin-block: var(--gutter-lg);
+  }
+
+  .banner__intro,
+  .banner__title,
+  .banner__desc {
+    text-align: center;
+  }
+
+  .banner__cta {
+    display: flex;
+    justify-content: center;
+  }
+
+  .banner__view-work,
+  .banner__get-in-touch {
+    min-height: var(--gutter-md);
+  }
+
+  .banner__get-in-touch {
+    display: none;
+  }
+
+  .banner__arrow {
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .button:hover .banner__arrow {
+    transform: translateX(var(--space-sm));
+  }
+
+  .banner__persona {
+    display: none;
+    position: relative;
+  }
+
+  .banner__image {
+    width: 100%;
+    height: auto;
+  }
+
+  .banner__version {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-500);
+    transform: translate(-15px, 15px);
+    padding: var(--gutter-sm);
+    font-size: var(--text-2xl);
+    font-weight: bold;
+    letter-spacing: 0.04rem;
+    color: var(--neutral-50);
+  }
+
+  @media (width >= 768px) {
+    .banner {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding-block: var(--gutter-4xl);
+      gap: var(--space-3xl);
+    }
+
+    .banner__desc {
+      margin-block: var(--gutter-xl);
+    }
+
+    .banner__title {
+      font-size: var(--text-5xl);
+    }
+
+    .banner__intro,
+    .banner__title,
+    .banner__desc {
+      text-align: left;
+    }
+
+    .banner__cta {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      gap: var(--gutter-md);
+    }
+
+    .banner__persona {
+      display: inline-block;
+    }
+
+    .banner__get-in-touch {
+      display: block;
+    }
+  }
+</style>

@@ -1,0 +1,77 @@
+---
+import { SocialMediaLinks } from '@/constants/SocialLinks';
+---
+
+<footer class="footer-wrapper">
+  <section class="footer">
+    <p class="footer__title">TECHNICAL CURATOR</p>
+    <div class="footer_content">
+      <span class="footer__copyright">
+        &#169; 2026 @LEE.DEV ALL RIGHTS RESERVED&nbsp;-&nbsp;オタクテック</span
+      >
+      <span class="footer_social-links">
+        {
+          SocialMediaLinks.map((link) => (
+            <a href="#" class="footer_social-link">
+              {link.label}
+            </a>
+          ))
+        }
+      </span>
+    </div>
+  </section>
+</footer>
+
+<style>
+  .footer-wrapper {
+    width: 100%;
+    background-color: var(--tertiary-700);
+  }
+
+  .footer {
+    margin: 0 auto;
+    padding: var(--gutter-xl) var(--gutter-xl);
+    max-width: var(--screen-xl);
+  }
+
+  .footer__title {
+    color: var(--neutral-300);
+    font-size: var(--text-lg);
+    margin-bottom: 1rem;
+    margin-top: 0;
+  }
+
+  .footer_content {
+    color: var(--neutral-500);
+    font-size: var(--text-xs);
+  }
+
+  .footer_social-links {
+    display: none;
+  }
+
+  .footer_social-link {
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--neutral-500);
+  }
+
+  @media (width >= 768px) {
+    .footer_social-links {
+      display: flex;
+      align-items: center;
+      gap: var(--gutter-md);
+    }
+
+    .footer_content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: var(--text-sm);
+    }
+
+    .footer__title {
+      font-size: var(--text-xl);
+    }
+  }
+</style>

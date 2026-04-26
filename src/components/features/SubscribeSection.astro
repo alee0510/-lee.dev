@@ -1,0 +1,186 @@
+---
+import Button from '@/components/ui/Button.astro';
+---
+
+<section id="cta-subscibe" class="subscribe-wrapper">
+  <div class="subscribe">
+    <p class="subscribe__title">READY TO SCALE?</p>
+    <div class="subscribe__content">
+      <span class="subscribe__left">
+        <p class="subscribe__desc">
+          I help company transition form legacy system to modern, editorial
+          grade experience that perform at speed of tought.
+        </p>
+        <form class="subscribe__form">
+          <span class="subscribe__input-wrapper">
+            <input
+              type="email"
+              placeholder="YOUR EMAIL ADDRESS"
+              class="subscribe__input"
+            />
+          </span>
+          <Button
+            class="subscribe__button"
+            styles={{
+              padding: 'var(--gutter-sm) var(--gutter-xl)',
+              'font-size': 'var(--text-xl)',
+            }}
+          >
+            SUBSCRIBE
+          </Button>
+        </form>
+      </span>
+      <span class="subscribe__right">
+        <span class="subscribe__info">
+          <p class="subscribe__label">AVAILABILITY</p>
+          <p class="subscribe__value">Q4 2026</p>
+        </span>
+        <span class="subscribe__info">
+          <p class="subscribe__label">LOCATION</p>
+          <p class="subscribe__value">REMOTE&nbsp;/&nbsp;GMT+7</p>
+        </span>
+        <span class="subscribe__info">
+          <p class="subscribe__label">TIMEZONE</p>
+          <p class="subscribe__value">UTC&nbsp;/&nbsp;GMT</p>
+        </span>
+        <span class="subscribe__info">
+          <p class="subscribe__label">STATUS</p>
+          <p class="subscribe__value subscribe__value--highlight">AVAILABLE</p>
+        </span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .subscribe-wrapper {
+    --b: 12px;
+    width: 100%;
+    background-color: var(--tertiary-600);
+  }
+
+  .subscribe {
+    margin: 0 auto;
+    padding: var(--gutter-3xl) var(--gutter-lg);
+    max-width: var(--screen-xl);
+  }
+
+  .subscribe__title {
+    color: var(--primary-500);
+    font-size: var(--text-2xl);
+    font-weight: bold;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+  }
+
+  .subscribe__content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-xl);
+  }
+
+  .subscribe__left {
+    flex: 2;
+  }
+
+  .subscribe__desc {
+    color: var(--neutral-500);
+    font-size: var(--text-sm);
+    margin-bottom: var(--gutter-md);
+  }
+
+  .subscribe__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .subscribe__input-wrapper {
+    min-width: 50%;
+    display: inline-flex;
+    align-items: center;
+    padding: 1px;
+    background-color: var(--primary-500);
+  }
+
+  .subscribe__input-wrapper,
+  .subscribe__input {
+    clip-path: polygon(
+      var(--b) 0,
+      100% 0,
+      100% calc(100% - var(--b)),
+      calc(100% - 10px) 100%,
+      0 100%,
+      0 var(--b)
+    );
+  }
+
+  .subscribe__input {
+    width: 100%;
+    padding: var(--gutter-sm);
+    background-color: var(--tertiary-600);
+    color: var(--primary-500);
+    font-size: var(--text-lg);
+    letter-spacing: 0.05rem;
+    border: none;
+    outline: none;
+    transition: background-color 0.2s ease;
+  }
+
+  .subscribe__input:-webkit-autofill,
+  .subscribe__input:-webkit-autofill:hover,
+  .subscribe__input:-webkit-autofill:focus,
+  .subscribe__input:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--primary-500);
+    -webkit-box-shadow: 0 0 0px 1000px var(--tertiary-600) inset;
+    box-shadow: 0 0 0px 1000px var(--tertiary-600) inset;
+  }
+
+  .subscribe__right {
+    display: none;
+  }
+
+  .subscribe__label {
+    color: var(--neutral-500);
+    font-size: var(--text-xs);
+  }
+
+  .subscribe__value {
+    color: var(--neutral-200);
+    font-size: var(--text-lg);
+    margin-block: 0.5rem;
+  }
+
+  .subscribe__value--highlight {
+    color: var(--primary-400);
+  }
+
+  @media (width >= 768px) {
+    .subscribe {
+      padding: var(--gutter-3xl) var(--gutter-xl);
+    }
+
+    .subscribe__right {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--gutter-sm);
+    }
+
+    .subscribe__title {
+      font-size: var(--text-3xl);
+    }
+
+    .subscribe__desc {
+      font-size: var(--text-base);
+      margin-bottom: var(--gutter-lg);
+    }
+
+    .subscribe__form {
+      align-items: center;
+      flex-direction: row;
+      gap: var(--space-md);
+    }
+  }
+</style>

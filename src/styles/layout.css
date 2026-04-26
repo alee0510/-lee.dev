@@ -1,0 +1,100 @@
+.container {
+  margin: 0 auto;
+  padding: var(--gutter-lg) var(--gutter-lg);
+  max-width: var(--screen-xl);
+}
+
+.section-index {
+  color: var(--primary-400);
+  font-size: var(--text-xs);
+  font-weight: 500;
+}
+
+.title {
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+.paragraph {
+  font-size: var(--text-xs);
+}
+
+.info {
+  font-size: var(--text-xs);
+}
+
+.tag {
+  font-size: var(--text-xs);
+  padding: var(--space-xs) var(--space-md);
+}
+
+.bracket::before {
+  content: '';
+  position: absolute;
+  inset: 0px;
+  --b: 2px;
+  --c: 13px;
+  background:
+    conic-gradient(
+        from 90deg at top var(--b) left var(--b),
+        #0000 25%,
+        var(--primary-400) 0
+      )
+      0 0 / var(--c) var(--c),
+    conic-gradient(
+        from 180deg at top var(--b) right var(--b),
+        #0000 25%,
+        var(--primary-400) 0
+      )
+      100% 0 / var(--c) var(--c),
+    conic-gradient(
+        from 0deg at bottom var(--b) left var(--b),
+        #0000 25%,
+        var(--primary-400) 0
+      )
+      0 100% / var(--c) var(--c),
+    conic-gradient(
+        from -90deg at bottom var(--b) right var(--b),
+        #0000 25%,
+        var(--primary-400) 0
+      )
+      100% 100% / var(--c) var(--c);
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    inset 0.3s ease;
+  pointer-events: none;
+}
+
+.bracket:hover::before {
+  opacity: 1;
+  inset: -5px;
+}
+
+@media (width >= 768px) {
+  .container {
+    padding: var(--gutter-md) var(--gutter-xl);
+  }
+
+  .section-index {
+    font-size: var(--text-sm);
+  }
+
+  .title {
+    font-size: var(--text-2xl);
+  }
+
+  .paragraph {
+    font-size: var(--text-sm);
+  }
+
+  .info {
+    font-size: var(--text-sm);
+  }
+
+  .tag {
+    font-size: var(--text-sm);
+    padding: var(--space-sm) var(--space-lg);
+  }
+}
