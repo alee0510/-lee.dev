@@ -173,8 +173,8 @@
   --gutter-lg: 2rem; /* 32px — laptop */
   --gutter-xl: 2.5rem; /* 40px — desktop */
   --gutter-2xl: 3rem; /* 48px — large monitor */
-  --gutter-3xl: 4rem; /* 64px*/
-  --gutter-4xl: 4.5rem; /* 72px*/
+  --gutter-3xl: 4rem; /* 64px */
+  --gutter-4xl: 4.5rem; /* 72px */
 }
 
 html,

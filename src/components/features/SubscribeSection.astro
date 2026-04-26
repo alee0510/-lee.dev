@@ -55,6 +55,7 @@ import Button from '@/components/ui/Button.astro';
 <style>
   .subscribe-wrapper {
     --b: 12px;
+
     width: 100%;
     background-color: var(--tertiary-600);
   }
@@ -69,7 +70,7 @@ import Button from '@/components/ui/Button.astro';
     color: var(--primary-500);
     font-size: var(--text-2xl);
     font-weight: bold;
-    margin-top: 0rem;
+    margin-top: 0;
     margin-bottom: 1rem;
   }
 
@@ -133,8 +134,7 @@ import Button from '@/components/ui/Button.astro';
   .subscribe__input:-webkit-autofill:focus,
   .subscribe__input:-webkit-autofill:active {
     -webkit-text-fill-color: var(--primary-500);
-    -webkit-box-shadow: 0 0 0px 1000px var(--tertiary-600) inset;
-    box-shadow: 0 0 0px 1000px var(--tertiary-600) inset;
+    box-shadow: 0 0 0 1000px var(--tertiary-600) inset;
   }
 
   .subscribe__right {
